@@ -152,7 +152,7 @@ function articleMaker(articleOjb) {
   firstParagraph.textContent = articleOjb.firstParagraph
   secondParagraph.textContent = articleOjb.secondParagraph
   thirdParagraph.textContent = articleOjb.thirdParagraph
-  expandButton.textContent = "+"
+  expandButton.textContent = "Click to Expand"
 
   articleBody.classList.add('article')
   articleDate.classList.add('date')
@@ -165,8 +165,14 @@ function articleMaker(articleOjb) {
   articleBody.appendChild(thirdParagraph)
   articleBody.appendChild(expandButton)
 
-  expandButton.addEventListener('click', () => {
+  expandButton.addEventListener('click', function () {
     articleBody.classList.toggle('article-open')
+    this.classList.toggle('top')
+    if (this.textContent.toLocaleLowerCase() === "click to expand") {
+      this.textContent = "Click to Close"
+    } else {
+      this.textContent = "Click to Expand"
+    }
   })
 
   return articleBody
