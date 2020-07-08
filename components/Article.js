@@ -85,29 +85,102 @@ const data = [
     thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
           Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
+  },
+  {
+    title: 'Lambda Web 2020',
+    date: 'July 11th, 2020',
+    firstParagraph: `consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation 
+    ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure `,
+
+    secondParagraph: `consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+    ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure`,
+
+    thirdParagraph: `consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+    ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure`
+  },
+  {
+    title: 'More random stuff here',
+    date: 'Jan 11st, 2025',
+    firstParagraph: `Lacus luctus accumsan tortor posuere ac ut consequat semper viverra.Lacus luctus accumsan tortor posuere ac ut consequat semper viverra.
+    Lacus luctus accumsan tortor posuere ac ut consequat semper viverra.Lacus luctus accumsan tortor posuere ac ut consequat semper viverra.
+    Lacus luctus accumsan tortor posuere ac ut consequat semper viverra.Lacus luctus accumsan tortor posuere ac ut consequat semper viverra.
+    Lacus luctus accumsan tortor posuere ac ut consequat semper viverra.Lacus luctus accumsan tortor posuere ac ut consequat semper viverra.`,
+
+    secondParagraph: `Lacus luctus accumsan tortor posuere ac ut consequat semper viverra.Lacus luctus accumsan tortor posuere ac ut consequat semper viverra.
+    Lacus luctus accumsan tortor posuere ac ut consequat semper viverra.Lacus luctus accumsan tortor posuere ac ut consequat semper viverra.
+    Lacus luctus accumsan tortor posuere ac ut consequat semper viverra.Lacus luctus accumsan tortor posuere ac ut consequat semper viverra.
+    Lacus luctus accumsan tortor posuere ac ut consequat semper viverra.Lacus luctus accumsan tortor posuere ac ut consequat semper viverra.`,
+
+    thirdParagraph: `Lacus luctus accumsan tortor posuere ac ut consequat semper viverra.Lacus luctus accumsan tortor posuere ac ut consequat semper viverra.
+    Lacus luctus accumsan tortor posuere ac ut consequat semper viverra.Lacus luctus accumsan tortor posuere ac ut consequat semper viverra.
+    Lacus luctus accumsan tortor posuere ac ut consequat semper viverra.Lacus luctus accumsan tortor posuere ac ut consequat semper viverra.
+    Lacus luctus accumsan tortor posuere ac ut consequat semper viverra.Lacus luctus accumsan tortor posuere ac ut consequat semper viverra.`
+  },
+  {
+    title: "Last But Not Least",
+    date: 'June 15th 3050',
+    firstParagraph: `Sed augue lacus viverra vitae congue eu consequat ac. Sed vulputate odio ut enim blandit.
+    Sed augue lacus viverra vitae congue eu consequat ac. Sed vulputate odio ut enim blandit.
+    Sed augue lacus viverra vitae congue eu consequat ac. Sed vulputate odio ut enim blandit.
+    Sed augue lacus viverra vitae congue eu consequat ac. Sed vulputate odio ut enim blandit.`,
+
+    secondParagraph: `Sed augue lacus viverra vitae congue eu consequat ac. Sed vulputate odio ut enim blandit.
+    Sed augue lacus viverra vitae congue eu consequat ac. Sed vulputate odio ut enim blandit.
+    Sed augue lacus viverra vitae congue eu consequat ac. Sed vulputate odio ut enim blandit.
+    Sed augue lacus viverra vitae congue eu consequat ac. Sed vulputate odio ut enim blandit.`,
+
+    thirdParagraph: `Sed augue lacus viverra vitae congue eu consequat ac. Sed vulputate odio ut enim blandit.
+    Sed augue lacus viverra vitae congue eu consequat ac. Sed vulputate odio ut enim blandit.
+    Sed augue lacus viverra vitae congue eu consequat ac. Sed vulputate odio ut enim blandit.
+    Sed augue lacus viverra vitae congue eu consequat ac. Sed vulputate odio ut enim blandit.`
   }
 ];
 
-/* Step 1: Write a component called 'articleMaker' to create an article. You want your component to return markup like the template below: 
+const articlesSection = document.querySelector('.articles')
+//Step 1: Write a component called 'articleMaker' to create an article. You want your component to return markup like the template below:
+function articleMaker(articleOjb) {
+  const articleBody = document.createElement('div')
+  const articleTitle = document.createElement('h2')
+  const articleDate = document.createElement('p')
+  const firstParagraph = document.createElement('p')
+  const secondParagraph = document.createElement('p')
+  const thirdParagraph = document.createElement('p')
+  const expandButton = document.createElement('span')
 
-  <div class="article">
-    <h2>{title of the article}</h2>
-    <p class="date">{date of the article}</p>
+  articleTitle.textContent = articleOjb.title
+  articleDate.textContent = articleOjb.date
+  firstParagraph.textContent = articleOjb.firstParagraph
+  secondParagraph.textContent = articleOjb.secondParagraph
+  thirdParagraph.textContent = articleOjb.thirdParagraph
+  expandButton.textContent = "+"
 
-    {three separate paragraph elements}
+  articleBody.classList.add('article')
+  articleDate.classList.add('date')
+  expandButton.classList.add('expandButton')
 
-    <span class='expandButton'>+</span>
-  </div>
+  articleBody.appendChild(articleTitle)
+  articleBody.appendChild(articleDate)
+  articleBody.appendChild(firstParagraph)
+  articleBody.appendChild(secondParagraph)
+  articleBody.appendChild(thirdParagraph)
+  articleBody.appendChild(expandButton)
 
-  Hint: You will need to use createElement more than once here!
+  expandButton.addEventListener('click', () => {
+    articleBody.classList.toggle('article-open')
+  })
 
-  Your function should take either an object as its one argument, or 5 separate strings mapping to each property of an article object.
+  return articleBody
+}
 
-  Step 2: Add an event listener to the expandButton span. This listener should toggle the class 'article-open' on the 'article' div.
+// Step 2: Add an event listener to the expandButton span. This listener should toggle the class 'article-open' on the 'article' div.
+//*** added to the articleMaker function
 
-  Step 3: Don't forget to return something from your function!
 
-  Step 4: Outside your function, loop over the data. At each iteration you'll use your component to create an article and append it to the DOM inside the 'articles' div.
 
-  Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new article.
-*/
+// Step 3: Don't forget to return something from your function!
+// *** completed
+
+// Step 4: Outside your function, loop over the data. At each iteration you'll use your component to create an article and append it to the DOM inside the 'articles' div.
+data.forEach(article => articlesSection.appendChild(articleMaker(article)))
+
+// Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new article.
