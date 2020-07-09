@@ -146,6 +146,7 @@ function articleMaker(articleOjb) {
   const secondParagraph = document.createElement('p')
   const thirdParagraph = document.createElement('p')
   const expandButton = document.createElement('span')
+  const readButton = document.createElement('button')
 
   articleTitle.textContent = articleOjb.title
   articleDate.textContent = articleOjb.date
@@ -153,10 +154,13 @@ function articleMaker(articleOjb) {
   secondParagraph.textContent = articleOjb.secondParagraph
   thirdParagraph.textContent = articleOjb.thirdParagraph
   expandButton.textContent = "Click to Expand"
+  readButton.textContent = "Mark as Read"
 
   articleBody.classList.add('article')
   articleDate.classList.add('date')
   expandButton.classList.add('expandButton')
+  readButton.classList.add('article-button')
+  readButton.setAttribute('id', "hideButton")
 
   articleBody.appendChild(articleTitle)
   articleBody.appendChild(articleDate)
@@ -164,6 +168,7 @@ function articleMaker(articleOjb) {
   articleBody.appendChild(secondParagraph)
   articleBody.appendChild(thirdParagraph)
   articleBody.appendChild(expandButton)
+  articleBody.appendChild(readButton)
 
   expandButton.addEventListener('click', function () {
     articleBody.classList.toggle('article-open')
@@ -175,18 +180,11 @@ function articleMaker(articleOjb) {
     }
   })
 
+  readButton.addEventListener('click', function (e) {
+    this.parentNode.style.display = "none"
+  })
+
   return articleBody
 }
 
-// Step 2: Add an event listener to the expandButton span. This listener should toggle the class 'article-open' on the 'article' div.
-//*** added to the articleMaker function
-
-
-
-// Step 3: Don't forget to return something from your function!
-// *** completed
-
-// Step 4: Outside your function, loop over the data. At each iteration you'll use your component to create an article and append it to the DOM inside the 'articles' div.
 data.forEach(article => articlesSection.appendChild(articleMaker(article)))
-
-// Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new article.
