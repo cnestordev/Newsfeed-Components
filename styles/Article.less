@@ -4,18 +4,29 @@
 .article {
   margin: 20px 10%;
   padding: 0 20px 25px;
-  border: 1px solid lightgrey;
-  border-radius: 10px;
-  background-color: white;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  background-color: #3c454e;
   position: relative;
   height: 50px;
   overflow: hidden;
-  box-shadow: 2px 2px 2px lightgrey;
+  // box-shadow: 2px 2px 2px lightgrey;
+  transition: 300ms;
 
   h2 {
     font-size: 28px;
     padding: 0;
     margin: 15px 0 0;
+    color: #c7c7c7;
+  }
+
+  p {
+    color: #c7c7c7;
+    line-height: 1.5;
+  }
+
+  .date {
+    color: #a2a2a2;
   }
 
   .date {
@@ -31,20 +42,40 @@
 
   .expandButton {
     position: absolute;
-    bottom: 0;
-    left: 50%;
+    // bottom: 0;
+    bottom: 50%;
+    top: 50%;
+    // left: 50%;
+    right: 0;
+    // font-size: 12px;
     font-size: 12px;
-    color: grey;
+    color: #cecece;
     cursor: pointer;
     transform: translate(-50%);
-    background-color: white;
   }
 }
 
 .article-open {
-  height: 400px;
+  height: auto;
+  transition: 300ms;
 }
 
+.top {
+  top: 5% !important;
+  height: max-content;
+}
 
+.article-button {
+  background: white;
+  border: none;
+  border-radius: 3px;
+  padding: 0.25% 0.50%;
+  margin-top: 1%;
+  background: #cecece;
+}
+
+.article-button:hover {
+  cursor: pointer;
+}
 
 

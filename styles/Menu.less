@@ -5,17 +5,17 @@
 }
 
 .menu {
-  display: none;
   position: fixed;
   top: 75px;
   left: 0;
   width: 350px;
   height: 100vh; /* This give the height 100% of the screen or, '100% of View Height' */
-  background-color: #81C784;
-  border: 1px solid #004D40;
+  background-color: #3c454e;
+  border: 1px solid transparent;
   border-left: none;
   border-bottom: none;
   z-index: 2; /* This set the layer level of the element, it has precendence over initial level of 1*/
+  transition: 350ms;
 }
 
 .menu ul li{
@@ -25,6 +25,21 @@
   text-align: center;
 }
 
+.menu ul li:hover {
+  cursor: pointer;
+  background: white;
+  color: #81c784;
+}
+
 .menu--open {
   display: block;
+}
+
+.hidden {
+  width: 0px;
+  transition: 350ms;
+}
+
+.remove {
+  display: none;
 }

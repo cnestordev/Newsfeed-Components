@@ -1,5 +1,4 @@
 /* This is the data we will be using, study it but don't change anything, yet. */
-
 let menuItems = [
   'Students',
   'Faculty',
@@ -8,26 +7,56 @@ let menuItems = [
   'Music',
   'Log Out'
 ];
+// ----------------------------------------------------------------------------------------------------------------
+function menuMaker(menuArray) {
+  const menuDiv = document.createElement('div')
+  const menuList = document.createElement('ul')
 
-/* 
-  Step 1: Write a component called 'menuMaker' to create a menu like the markup below:
+  menuDiv.classList.add('menu')
+  menuDiv.classList.add('hidden')
 
-  <div class="menu">
-    <ul>
-      {each menu item as a list item}
-    </ul>
-  </div>
+  menuArray.forEach(item => {
+    let newItem = document.createElement('li')
+    newItem.textContent = item
+    newItem.classList.add('remove')
+    menuList.appendChild(newItem)
+  });
 
-  The 'menuMaker' takes an array as its only argument.
+  menuDiv.appendChild(menuList)
 
-  Step 2: Inside the function, iterate over the array creating a list item <li> element for each item in the array. 
-  Add those items to the <ul>
+  const menuButton = document.querySelector('.menu-button')
 
-  Step 3: Using a DOM selector, select the menu button (the element with a class of 'menu-button') currently on the DOM.
+  return menuDiv
+}
 
-  Step 4: add a click event listener to the menu button. When clicked it should toggle the class 'menu--open' on the menu (your div with a 'menu' class).
+const header = document.querySelector('.header')
+header.appendChild(menuMaker(menuItems))
 
-  Step 5: return your div with a 'menu' class.
+window.addEventListener('load', () => {
+  const menuButton = document.querySelector('.menu-button')
+  const menuDiv = document.querySelector('.menu')
+  const navLinks = document.querySelectorAll('li')
 
-  Step 6: Use 'menuMaker' to create a menu using the 'menuItems' array, and append the returned menu to the header.
-*/
+  //sliding animation and toggling buttons on and off;
+  menuButton.addEventListener('click', () => {
+    menuDiv.classList.toggle('hidden')
+    navLinks.forEach(li => li.classList.toggle('remove'))
+  })
+
+  //clicking on nav item will collapse menu and hide links
+  navLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      menuDiv.classList.toggle('hidden')
+      navLinks.forEach(li => li.classList.toggle('remove'))
+    })
+  })
+
+  //clicking anywhere outside of nav menu will collapse menu
+  window.addEventListener('click', (e) => {
+    if ((e.target.classList.value !== 'menu' && e.target.classList.value !== 'menu-button') && !menuDiv.classList.value.includes('hidden')) {
+      menuDiv.classList.add('hidden')
+      navLinks.forEach(li => li.classList.add('remove'))
+    }
+  })
+
+})
